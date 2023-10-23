@@ -49,56 +49,82 @@ class Person {
         this.address = address
     }
 
-    makeMoney(){
-        return 'You need a job to make money.'
+    isAnAdult(){
+        return this.age >= 18 ? 'You are an adult and you need a job to make money.'
+        : "You are a child, and you need an adult to sponsor you."
     }
 
-    getSomeSleep(){
-        return 'Time for bed'
+    getAddress(){
+        return `I live in ${this.address}`
     }
 
-    eatSomeFood(){
-        return 'Time to eat.'
+    describePerson(){
+        return `I am ${this.name}, and I'm ${this.age} and I live in ${this.address}.`
     }
 }
 
 class Chef extends Person {
-    constructor(name, age, address, employer, yearsOnTheJob) {
+    constructor(name, age, address, employer, yearsOnTheJob, favoriteDish) {
         super(name, age, address)
         this.employer = employer
         this.yearsOnTheJob = yearsOnTheJob
+        this.favoriteDish = favoriteDish
     }
 
-    makeRecipes() {
-
+    getEmployer() {
+        return this.employer
     }
 
-    getChefInfo() {
-
+    describePerson() {
+        return `I am ${this.name}, and I'm ${this.age} and I live in ${this.address}. I work at ${this.employer} as a Chef with ${this.yearsOnTheJob} years of experience. My favorite dish to cook is ${this.favoriteDish}.`
     }
 
-    getFavoriteFood() {
-
+    getExperience() {
+        return this.yearsOnTheJob
     }
 }
 
 class PostalWorker extends Person {
-    constructor(name, age, address, employer, yearsOnTheJob) {
+    constructor(name, age, address, employer, yearsOnTheJob, numberOfDeliveries, numberOfPickUps) {
         super(name, age, address)
         this.employer = employer
         this.yearsOnTheJob = yearsOnTheJob
+        this.numberOfDeliveries = numberOfDeliveries
+        this.numberOfPickUps = numberOfPickUps
     }
 
     getDeliveredMail() {
-
+        return `Postal Worker ${this.name} has delivered ${this.numberOfDeliveries} packages today.`
     }
 
     getMailPickup() {
-
+        return `Postal Worker ${this.name} has delivered ${this.numberOfPickUps} packages today.`
     }
 
-    getPostPersonInfo() {
-
+    describePerson() {
+        return `I am ${this.name}, and I'm ${this.age} and I live in ${this.address}. I work for ${this.employer}, with ${this.yearsOnTheJob} years on the job, and I have made ${this.numberOfDeliveries} deliveries and picked up ${this.numberOfPickUps} packages.`
     }
 }
+
+const chef1 = new Chef('Gordon Ramsay', 56, 'London, England', 'Hell\'s Kitchen', 36, 'Beef Wellington')
+const chef2 = new Chef('Guy Fieri', 46, 'Las Vegas, Neveda', 'Food Network', 21, 'Cheeseburger')
+
+const postalWorker1 =  new PostalWorker('Joe Smoe', 37, 'Erie, PA', 'USPS', 19, 56, 14)
+const postalWorker2 =  new PostalWorker('Sandy Brown', 52, 'Phildaelphia, PA', 'FedEx', 33, 25, 2)
+
+console.log(chef1.describePerson())
+console.log(chef1.getEmployer())
+console.log(chef1.getAddress())
+
+console.log(chef2.describePerson())
+console.log(chef2.getEmployer())
+console.log(chef2.getAddress())
+
+console.log(postalWorker1.describePerson())
+console.log(postalWorker1.getDeliveredMail())
+console.log(postalWorker1.getMailPickup())
+
+console.log(postalWorker2.describePerson())
+console.log(postalWorker2.getDeliveredMail())
+console.log(postalWorker2.getMailPickup())
 
